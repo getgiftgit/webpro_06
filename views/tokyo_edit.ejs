@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>編集</title>
+</head>
+<body>
+    <h2><%= data.name %> の情報を編集</h2>
+    <form action="/tokyo/update/<%= id %>" method="POST">
+        <label>スポット名: <input type="text" name="name" value="<%= data.name %>"></label><br>
+        <label>ジャンル: <input type="text" name="type" value="<%= data.type %>"></label><br>
+        <label>料金: <input type="text" name="fee" value="<%= data.fee %>"></label><br>
+        <label>アクセス: <input type="text" name="access" value="<%= data.access %>"></label><br>
+        <br>
+        <input type="submit" value="更新する">
+    </form>
+    <a href="/tokyo">一覧に戻る</a>
+</body>
+</html>

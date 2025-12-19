@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+body{
+    text-align:center;
+    background-color:cornsilk
+}
+
+.tb{
+
+align-items: center;
+justify-content: center;
+display: flex;
+}
+
+</style>
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <title>東京観光スポット</title>
+</head>
+<body>
+    <h2>東京のおすすめ観光スポット</h2>
+    
+    <a href="/tokyo/create"><button>＋ 新規スポットを追加</button></a>
+    <hr>
+<div class="tb">
+    <table border="1">
+        <tr><th>ID</th><th>スポット名</th><th>ジャンル</th><th>操作</th></tr>
+        <% let number = 0 %>
+        <% for(let row of data) { %>
+            <tr>
+                <td><%= row.id %></td>
+                <td><a href="/tokyo/<%= number %>"><%= row.name %></a></td>
+                <td><%= row.type %></td>
+                <td>
+                    <a href="/tokyo/edit/<%= number %>">編集</a> | 
+                    <a href="/tokyo/delete/<%= number %>">削除</a>
+                </td>
+            </tr>
+            <% number += 1 %>
+        <% } %>
+    </table>
+</div>
+    <br>
+
+
+    <a href="https://aonohako-anime.com/"><img src="/public/koga.png" width="300"></a>
+    <img src="/public/tyou.png" width="400">
+    
+</body>
+</html>

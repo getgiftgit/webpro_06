@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>千葉モノレールの観光</title>
+</head>
+<body>
+    <h2>千葉モノレール沿線スポット一覧</h2>
+    <table border="1">
+        <tr><th>ID</th><th>駅名</th><th>観光スポット</th></tr>
+        <% let number = 0 %>
+        <% for(let row of data) { %>
+            <tr>
+                <td><%= row.id %></td>
+                <td><a href="/chibamono/<%= number %>"><%= row.name %></a></td>
+                <td><%= row.site %></td>
+            </tr>
+            <% number += 1 %>
+        <% } %>
+    </table>
+    
+</body>
+</html>
