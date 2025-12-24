@@ -3,10 +3,28 @@
 <head>
     <meta charset="utf-8">
     <title>新規登録</title>
+ <style>
+
+ body{
+    text-align:center;
+    background-color:bisque;
+ }
+
+ .create{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+ }
+
+
+
+ </style>
 </head>
+
 <body>
     <h2>新しい観光スポットを登録</h2>
-    <form action="/tokyo" method="POST">
+    <div class=create>
+        <form action="/tokyo" method="POST">
         <label>スポット名: <input type="text" name="name" required></label><br>
         <label>ジャンル: <input type="text" name="type"></label><br>
         <label>料金: <input type="text" name="fee"></label><br>
@@ -14,6 +32,9 @@
         <br>
         <input type="submit" value="登録する">
     </form>
+    </div>
+
+    <br><img src="/public/b.png" width="500"> 
     <a href="/tokyo">一覧に戻る</a>
 </body>
 </html>

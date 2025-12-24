@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>楽曲登録</title>
+    <style>
+        body { text-align: center; background-color: #e3f2fd; }
+        .create { align-items: center; justify-content: center; display: flex; }
+        form { background: white; padding: 20px; border-radius: 10px; }
+        input { margin-bottom: 10px; padding: 5px; width: 200px; }
+    </style>
+</head>
+<body>
+    <h2>新しい曲をライブラリに追加</h2>
+    <div class="create">
+        <form action="/songs" method="POST">
+            曲名: <input type="text" name="title" required><br>
+            アーティスト: <input type="text" name="artist"><br>
+            時間 (例 4:00): <input type="text" name="time"><br>
+            アルバム: <input type="text" name="album"><br>
+            ジャンル: <input type="text" name="genre"><br>
+            リリース年: <input type="number" name="year"><br>
+            <input type="submit" value="保存する">
+        </form>
+    </div>
+    <br><a href="/songs">戻る</a>
+</body>
+</html>

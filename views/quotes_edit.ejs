@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>編集</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #fafafa;
+        }
+
+        .edit {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <h2>名言の情報を編集</h2>
+    
+    <div class="edit">
+        <form action="/quotes/update/<%= id %>" method="POST">
+            <label>名言全文: <br><textarea name="text" rows="3" cols="30"><%= data.text %></textarea></label><br><br>
+            <label>発言者: <input type="text" name="author" value="<%= data.author %>"></label><br>
+            <label>出典: <input type="text" name="source" value="<%= data.source %>"></label><br>
+            <label>意味: <input type="text" name="meaning" value="<%= data.meaning %>"></label><br>
+            <br>
+            <input type="submit" value="更新する">
+        </form>
+    </div>
+
+    <br>
+    <a href="/quotes">一覧に戻る</a>
+</body>
+</html>

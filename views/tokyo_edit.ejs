@@ -3,9 +3,24 @@
 <head>
     <meta charset="utf-8">
     <title>編集</title>
+    <style>
+      body{
+        text-align:center;
+        background-color:burlywood;
+        
+      }
+        
+
+      .edit{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+      }
+    </style>
 </head>
 <body>
     <h2><%= data.name %> の情報を編集</h2>
+    <div class="edit"></div>
     <form action="/tokyo/update/<%= id %>" method="POST">
         <label>スポット名: <input type="text" name="name" value="<%= data.name %>"></label><br>
         <label>ジャンル: <input type="text" name="type" value="<%= data.type %>"></label><br>
@@ -14,6 +29,9 @@
         <br>
         <input type="submit" value="更新する">
     </form>
+</div>
+     <br><img src="/public/a.png" width="500" >
+     
     <a href="/tokyo">一覧に戻る</a>
 </body>
 </html>

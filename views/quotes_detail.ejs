@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%= data.author %>の名言</title>
+    <style>
+        body { text-align: center; background-color: #fafafa; }
+        .table { align-items: center; justify-content: center; display: flex; }
+    </style>
+</head>
+<body>
+    <h2>名言の詳細情報</h2>
+    <div class="table">
+        <table border="1">
+            <tr><th>項目</th><th>内容</th></tr>
+            <tr><td>発言者</td><td><%= data.author %></td></tr>
+            <tr><td>名言全文</td><td>「<%= data.text %>」</td></tr>
+            <tr><td>出典（作品など）</td><td><%= data.source %></td></tr>
+            <tr><td>言葉の意味</td><td><%= data.meaning %></td></tr>
+        </table>
+    </div>
+    <br><a href="/quotes">一覧に戻る</a>
+</body>
+</html>

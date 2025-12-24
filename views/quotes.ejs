@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>名言・格言集</title>
+    <style>
+        body { text-align: center; background-color: #fdf5e6; }
+        .tb { align-items: center; justify-content: center; display: flex; }
+        h2 { color: #8b4513; border-radius: 50px; display: inline-block; box-shadow: 5px 5px 15px #deb887; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h2>心を揺さぶる名言 10選</h2>
+    <br><a href="/quotes/create"><button>＋ 新しい名言を登録</button></a>
+    <hr>
+    <div class="tb">
+        <table border="1">
+            <tr><th>ID</th><th>名言</th><th>発言者</th><th>操作</th></tr>
+            <% let number = 0 %>
+            <% for(let row of data) { %>
+                <tr>
+                    <td><%= row.id %></td>
+                    <td><a href="/quotes/<%= number %>">「<%= row.text %>」</a></td>
+                    <td><%= row.author %></td>
+                    <td>
+                        <a href="/quotes/edit/<%= number %>">編集</a> | 
+                        <a href="/quotes/delete/<%= number %>">削除</a>
+                    </td>
+                </tr>
+                <% number += 1 %>
+            <% } %>
+        </table>
+    </div>
+</body>
+</html>

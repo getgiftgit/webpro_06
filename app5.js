@@ -171,6 +171,177 @@ app.get("/tokyo/delete/:number", (req, res) => {
 
 
 
+// 名言・格言データ（10個版）
+let quotes = [
+    { id: 1, text: "諦めたらそこで試合終了ですよ", author: "安西先生", source: "SLAM DUNK", meaning: "最後まで希望を捨てない大切さ" },
+    { id: 2, text: "Stay Hungry, Stay Foolish", author: "スティーブ・ジョブズ", source: "スタンフォード大演説", meaning: "常に学び、挑戦し続ける姿勢" },
+    { id: 3, text: "駆逐してやる…", author: "エレン・イェーガー", source: "進撃の巨人", meaning: "強い決意と目的意識" },
+    { id: 4, text: "お前の道を進め。人には勝手なことを言わせておけ", author: "ダンテ", source: "神曲", meaning: "他人の目を気にせず自分の信念を貫くこと" },
+    { id: 5, text: "自分を信じろ。そうすれば、どう生きるかがわかる", author: "ゲーテ", source: "ファウスト", meaning: "自己信頼が人生の指針になる" },
+    { id: 6, text: "失敗したことがない人間は、挑戦したことがない人間だ", author: "アインシュタイン", source: "名言集", meaning: "失敗は前進している証拠である" },
+    { id: 7, text: "天才とは、1％のひらめきと99％の努力である", author: "エジソン", source: "名言集", meaning: "地道な努力が才能を形にする" },
+    { id: 8, text: "配られたカードで勝負するしかないのさ", author: "スヌーピー", source: "ピーナッツ", meaning: "与えられた環境でベストを尽くす知恵" },
+    { id: 9, text: "お前の命は、お前一人のものじゃないんだぞ", author: "うずまきナルト", source: "NARUTO", meaning: "他者との繋がりや絆の重み" },
+    { id: 10, text: "明日死ぬかのように生き、永遠に生きるかのように学べ", author: "ガンジー", source: "名言集", meaning: "一日の尊さと学びの継続性" }
+];
+
+// 一覧表示
+app.get("/quotes", (req, res) => {
+    res.render('quotes', { data: quotes });
+});
+
+// 新規登録画面
+app.get("/quotes/create", (req, res) => {
+    res.render('quotes_create');
+});
+
+// 新規登録処理
+app.post("/quotes", (req, res) => {
+    const id = quotes.length + 1;
+    const item = {
+        id: id,
+        text: req.body.text,
+        author: req.body.author,
+        source: req.body.source,
+        meaning: req.body.meaning
+    };
+    quotes.push(item);
+    res.redirect('/quotes');
+});
+
+// 詳細表示
+app.get("/quotes/:number", (req, res) => {
+    const number = req.params.number;
+    const detail = quotes[number];
+    res.render('quotes_detail', { data: detail });
+});
+
+// 編集画面
+app.get("/quotes/edit/:number", (req, res) => {
+    const number = req.params.number;
+    const detail = quotes[number];
+    res.render('quotes_edit', { data: detail, id: number });
+});
+
+// 更新処理
+app.post("/quotes/update/:number", (req, res) => {
+    const number = req.params.number;
+    quotes[number].text = req.body.text;
+    quotes[number].author = req.body.author;
+    quotes[number].source = req.body.source;
+    quotes[number].meaning = req.body.meaning;
+    res.redirect('/quotes');
+});
+
+// 削除処理
+app.get("/quotes/delete/:number", (req, res) => {
+    const number = req.params.number;
+    quotes.splice(number, 1);
+    res.redirect('/quotes');
+});
+
+
+
+
+
+
+
+
+// 音楽プレイリストのデータ（10曲版）
+let songs = [
+    { id: 1, title: "然らば", artist: "マカロニえんぴつ", time: "3:45", album: "然らば", genre: "Rock", year: 2025 },
+    { id: 2, title: "Same Blue", artist: "Official髭男dism", time: "3:58", album: "Rejoice", genre: "J-POP", year: 2024 },
+    { id: 3, title: "ティーンエイジブルー", artist: "Eve", time: "3:35", album: "Under Blue", genre: "J-POP", year: 2024 },
+    { id: 4, title: "コントラスト", artist: "TOMOO", time: "3:45", album: "コントラスト", genre: "J-POP", year: 2025 },
+    { id: 5, title: "青と夏", artist: "Mrs. GREEN APPLE", time: "4:30", album: "Ensemble", genre: "Rock/Pop", year: 2018 },
+    { id: 6, title: "空と青", artist: "家入レオ", time: "4:51", album: "DUO", genre: "J-POP", year: 2019 },
+    { id: 7, title: "uni-verse", artist: "オーイシマサヨシ", time: "4:32", album: "ユニバース", genre: "Anime", year: 2023 },
+    { id: 8, title: "美しい鰭", artist: "スピッツ", time: "3:32", album: "ひみつスタジオ", genre: "Rock", year: 2023 },
+    { id: 9, title: "リボン", artist: "BUMP OF CHICKEN", time: "4:31", album: "aurora arc", genre: "Rock", year: 2017 },
+    { id: 10, title: "相思相愛", artist: "aiko", time: "4:15", album: "残心残暑", genre: "J-POP", year: 2024 }
+];
+
+// --- 音楽アプリ用のルート設定 ---
+
+// 1. 一覧表示 (Read)
+app.get("/songs", (req, res) => {
+    res.render('songs', { data: songs });
+});
+
+// 2. 新規登録画面 (Create)
+app.get("/songs/create", (req, res) => {
+    res.render('songs_create');
+});
+
+// 3. 新規登録の処理 (Create)
+app.post("/songs", (req, res) => {
+    const id = songs.length + 1;
+    const item = {
+        id: id,
+        title: req.body.title,
+        artist: req.body.artist,
+        time: req.body.time,
+        album: req.body.album,
+        genre: req.body.genre,
+        year: req.body.year
+    };
+    songs.push(item);
+    res.redirect('/songs');
+});
+
+// 4. 詳細表示 (Read)
+app.get("/songs/:number", (req, res) => {
+    const number = req.params.number;
+    const detail = songs[number];
+    res.render('songs_detail', { data: detail });
+});
+
+// 5. 編集画面 (Update)
+app.get("/songs/edit/:number", (req, res) => {
+    const number = req.params.number;
+    const detail = songs[number];
+    res.render('songs_edit', { data: detail, id: number });
+});
+
+// 6. 更新の処理 (Update)
+app.post("/songs/update/:number", (req, res) => {
+    const number = req.params.number;
+    songs[number].title = req.body.title;
+    songs[number].artist = req.body.artist;
+    songs[number].time = req.body.time;
+    songs[number].album = req.body.album;
+    songs[number].genre = req.body.genre;
+    songs[number].year = req.body.year;
+    res.redirect('/songs');
+});
+
+// 7. 削除の処理 (Delete)
+app.get("/songs/delete/:number", (req, res) => {
+    const number = req.params.number;
+    songs.splice(number, 1);
+    res.redirect('/songs');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

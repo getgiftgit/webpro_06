@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%= data.title %> の詳細</title>
+    <style>
+        body { text-align: center; background-color: #f0f4f8; }
+        .table { align-items: center; justify-content: center; display: flex; margin-top: 30px; }
+        table { background: white; border: 1px solid #ccc; width: 400px; }
+        td, th { padding: 15px; border-bottom: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <h2>楽曲詳細情報</h2>
+    <div class="table">
+        <table>
+            <tr><th>項目</th><th>情報</th></tr>
+            <tr><td>曲名</td><td><%= data.title %></td></tr>
+            <tr><td>アーティスト</td><td><%= data.artist %></td></tr>
+            <tr><td>アルバム</td><td><%= data.album %></td></tr>
+            <tr><td>ジャンル</td><td><%= data.genre %></td></tr>
+            <tr><td>リリース年</td><td><%= data.year %>年</td></tr>
+            <tr><td>再生時間</td><td><%= data.time %></td></tr>
+        </table>
+    </div>
+    <br><a href="/songs">プレイリストへ戻る</a>
+</body>
+</html>
